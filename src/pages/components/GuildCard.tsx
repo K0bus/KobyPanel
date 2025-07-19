@@ -1,7 +1,6 @@
-import {Plus, Settings, Users} from "lucide-react";
-import {Guild} from "@/types/Guild";
+import {Plus, Settings} from "lucide-react";
+import {Guild, GuildInfo} from "@/types/Guild";
 import Image from "next/image";
-import {GuildInfo} from "@/bot/GetGuild";
 
 export interface GuildCardProps {
     guild: Guild;
