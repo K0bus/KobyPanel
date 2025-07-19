@@ -27,6 +27,7 @@ export default function Home() {
                     const guildInf = await fetchGuildById(guild.id);
                     guildCards.push({ guild, guildInf });
                 } catch (e) {
+                    void e;
                     guildCards.push({ guild, guildInf: null });
                 }
             }

@@ -1,7 +1,7 @@
 // app/api/auth/[...nextauth]/route.ts
+import type {NextAuthOptions} from "next-auth";
 import NextAuth from "next-auth";
 import DiscordProvider from "next-auth/providers/discord";
-import type { NextAuthOptions } from "next-auth";
 
 // Cache temporaire en mémoire (basique, valable pour dev/local)
 const guildCache: Record<string, never[]> = {};
@@ -40,8 +40,7 @@ export const authOptions: NextAuthOptions = {
                         });
 
                         if (res.ok) {
-                            const guilds = await res.json();
-                            guildCache[token.accessToken] = guilds;
+                            guildCache[token.accessToken] = await res.json();
                         } else {
                             console.error("Erreur API Discord:", res.statusText);
                             guildCache[token.accessToken] = [];
